@@ -16,7 +16,7 @@ OPTIONS:
   -p, --type      Theme style variant(s)      [window|float|sharp|blur] (default is window)
   -i, --side      Picture display side        [left|right] (default is left)
   -c, --color     Background color variant(s) [dark|light] (default is dark)
-  -s, --screen    Screen display variant(s)   [1080p|2k|4k] (default is 1080p)
+  -s, --screen    Screen display variant(s)   [1080p|2k|2.5k|4k] (default is 1080p)
   -l, --logo      Show a logo on picture      [default|system] (default: a mountain logo)
   -r, --remove    Remove/Uninstall theme      (must add theme options, default is Elegant-forest-window-left-dark)
   -b, --boot      Install theme into '/boot/grub' or '/boot/grub2'
@@ -166,8 +166,12 @@ while [[ $# -gt 0 ]]; do
             screens+=("${SCREEN_VARIANTS[1]}")
             shift
             ;;
+	  2.5k)
+	    screens+=("${SCREEN_VARIANTS[2]}")
+	    shift
+	    ;;
           4k)
-            screens+=("${SCREEN_VARIANTS[2]}")
+            screens+=("${SCREEN_VARIANTS[3]}")
             shift
             ;;
           -*)

@@ -8,7 +8,7 @@ THEME_NAME=Elegant
 GRUB_DIR="/usr/share/grub/themes"
 REO_DIR="$(cd $(dirname $0) && pwd)"
 
-SCREEN_VARIANTS=('1080p' '2k' '4k')
+SCREEN_VARIANTS=('1080p' '2k' '2.5k' '4k')
 THEME_VARIANTS=('forest' 'mojave' 'mountain' 'wave')
 TYPE_VARIANTS=('window' 'float' 'sharp' 'blur')
 SIDE_VARIANTS=('left' 'right')
@@ -69,6 +69,9 @@ copy_files() {
       fontsize='16'
       ;;
     2k)
+      fontsize='24'
+      ;;
+    2.5k)
       fontsize='24'
       ;;
     4k)
@@ -203,6 +206,8 @@ install() {
       gfxmode="GRUB_GFXMODE=3840x2160,auto"
     elif [[ ${screen} == '2k' ]]; then
       gfxmode="GRUB_GFXMODE=2560x1440,auto"
+    elif [[ ${screen} == '2.5k' ]]; then
+      gfxmode="GRUB_GFXMODE=2560x1600,auto"
     fi
 
     if grep "GRUB_GFXMODE=" /etc/default/grub 2>&1 >/dev/null; then
@@ -365,11 +370,13 @@ run_dialog() {
     --radiolist "Choose your Display Resolution : " 15 40 5 \
       1 "1080p (1920x1080)" on \
       2 "2k (2560x1440)" off \
-      3 "4k (3840x2160)" off --output-fd 1 )
+      3 "2.5k (2560x1600)" off \
+      4 "4k (3840x2160)" off --output-fd 1 )
       case "$tui" in
         1) screen="1080p"       ;;
         2) screen="2k"          ;;
-        3) screen="4k"          ;;
+	3) screen="2.5k"	;;
+        4) screen="4k"          ;;
         *) operation_canceled   ;;
      esac
 

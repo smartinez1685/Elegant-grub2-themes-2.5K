@@ -18,7 +18,18 @@ Usage:  `./install.sh [OPTIONS...]`
 _If no options are used, a user interface `dialog` will show up instead_
 
 ### Examples:
- - Install mountain theme on 2k display device:
+ - Install mountain theme on 2.5k display device:
+
+```bash
+convert background.jpg \
+\( +clone -crop 50%x100%+1280+0 -blur 0x12 -evaluate multiply 1.1 \) \
+-geometry +1280+0 -composite background.jpg
+```
+
+```bash
+sudo ./install.sh -b -t forest -p blur -s 2.5k
+```
+
 
 ```sh
 sudo ./install.sh -t mountain -s 2k
